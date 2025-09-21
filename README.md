@@ -2,6 +2,8 @@
 
 ![شعار ELIEBOT](https://i.ibb.co/PZxFWbhY/image.jpg)
 
+Node.js Support v16.x | نسخة ELIEBOT معدلة من Goat Bot الأصلي | تم التعديل بواسطة الفريدو
+
 <p align="center">
 	<a href="https://nodejs.org/dist/v16.20.0">
 		<img src="https://img.shields.io/badge/Nodejs%20Support-16.x-brightgreen.svg?style=flat-square" alt="Nodejs Support v16.x">
@@ -10,6 +12,18 @@
 	<img alt="code-version" src="https://img.shields.io/badge/dynamic/json?color=brightgreen&label=code%20version&prefix=v&query=%24.version&url=https://github.com/ntkhang03/Goat-Bot-V2/raw/main/package.json&style=flat-square">
 	<img alt="license" src="https://img.shields.io/badge/license-MIT-green?style=flat-square&color=brightgreen">
 </p>
+
+---
+
+## 📑 جدول المحتويات
+- [📝 ملاحظة](#-ملاحظة)
+- [🚧 المتطلبات](#-المتطلبات)
+- [📝 الدروس التعليمية](#-الدروس-التعليمية)
+- [💡 كيف يعمل البوت؟](#-كيف-يعمل-البوت)
+- [🛠️ كيفية إنشاء أوامر جديدة](#️-كيفية-إنشاء-أوامر-جديدة)
+- [💭 الدعم](#-الدعم)
+- [📚 اللغات المدعومة](#-اللغات-المدعومة)
+- [✨ حقوق الملكية](#-حقوق-الملكية)
 
 ---
 
@@ -50,6 +64,32 @@
 ## 🛠️ كيفية إنشاء أوامر جديدة
 - انظر مجلد `commands` و `events` للحصول على أمثلة  
 - في VSCode يمكن استخدام Snippets: `GoatBotCommandCreate` أو `GoatBotEventCreate` (اضغط tab للانتقال للعنصر التالي)  
+- الملفات التي تنتهي بـ `.eg.js` لن تُحمّل، غيّر الامتداد إلى `.js` لتفعيلها
+
+---
+
+## 💭 الدعم
+للمساعدة التقنية، انضم لمجموعات الدعم التالية:  
+- [Discord](https://discord.com/invite/DbyGwmkpVY) (موصى به)  
+- [Facebook Group](https://www.facebook.com/groups/goatbot)  
+- [Messenger Chat](https://m.me/j/Abbq0B-nmkGJUl2C)  
+
+> يرجى عدم إرسال رسائل خاصة للمطور، استخدم مجموعات الدعم للرد على الأسئلة  
+
+---
+
+## 📚 اللغات المدعومة
+- en: English  
+- vi: Vietnamese  
+
+يمكن تغيير اللغة في ملف `config.json` أو في المجلد `languages/`، `languages/cmds/`، و `languages/events/`
+
+---
+
+## ✨ حقوق الملكية
+- المشروع الأصلي: NTKhang (Goat Bot)  
+- النسخة المعدلة: **ELIEBOT** بواسطة **الفريدو**  
+- شكر خاص لـ Allou Mohamed لتعديلات المصدر المفتوح- في VSCode يمكن استخدام Snippets: `GoatBotCommandCreate` أو `GoatBotEventCreate` (اضغط tab للانتقال للعنصر التالي)  
 - الملفات التي تنتهي بـ `.eg.js` لن تُحمّل، غيّر الامتداد إلى `.js` لتفعيلها
 
 ---
