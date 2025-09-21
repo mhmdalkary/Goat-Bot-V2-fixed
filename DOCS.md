@@ -1,66 +1,62 @@
-### **🛠️ Built-in Functions:**
-* Translate
-* convertTime
-* enable/disable process.stderr.clearLine
-* getExtFromMimeType
-* getTime
-* jsonStringifyColor
-* randomString/Number
-* findUid Facebook
-* getStreamsFromAttachment
-* getStreamFromURL
-* Google Drive: (upload, delete, getFile, etc...)
-* And more...<br />
-See [utils.js](https://github.com/ntkhang03/Goat-Bot-V2/blob/main/utils.js) for more details.
+# Goat-Bot-V2-fixed (نسخة معدلة من Goat Bot)
 
-<hr>
+هذا المشروع عبارة عن نسخة معدلة من **Goat Bot** الأصلي، تم تعديلها من قبل **Allou Mohamed** باسم **Goat-Bot-V2-fixed**
 
-### **🧠 Prepare**
-- [Node.js](https://nodejs.org/en/download/) 16.x
-- IDE or Text Editor (VSCode, Sublime Text, Atom, Notepad++, ...)
-- Knowledge of Javascript, Node.js, JSON,...
-- Knowledge of [Facebook Chat API Unofficial](https://github.com/ntkhang03/fb-chat-api/blob/master/DOCS.md)
+---
 
-### **⚠️ Important Note**
-- Any issues related to 18+, vulgarity, obscenity, pornography, treason, politics, etc., are not allowed in GoatBot. Adding custom commands or modifying the code to violate these rules will result in a **permanent ban**. Please be cautious with each line of your code.
-<hr>
+## 🛠️ الوظائف المدمجة
+- Translate  
+- convertTime  
+- تمكين/تعطيل `process.stderr.clearLine`  
+- getExtFromMimeType  
+- getTime  
+- jsonStringifyColor  
+- randomString/Number  
+- findUid Facebook  
+- getStreamsFromAttachment  
+- getStreamFromURL  
+- Google Drive: رفع، حذف، الحصول على الملفات، إلخ…  
+- والمزيد، راجع `utils.js` لمزيد من التفاصيل  
 
-### **💾 Database**
+---
 
-#### Type: You can choose one of the following storage methods, config at [config.json](https://github.com/ntkhang03/Goat-Bot-V2/blob/main/config.json)
-* [JSON](https://www.json.org/json-en.html) or [SQLite](https://www.sqlite.org/) or [MONGODB](https://www.mongodb.com/docs/manual/core/document/)
-* Basic usages:<br />
+## 🧠 التحضير
+- Node.js 16.x  
+- محرر نصوص أو IDE (VSCode، Sublime Text، Atom، Notepad++، …)  
+- معرفة بـ Javascript، Node.js، JSON  
+- معرفة بـ Facebook Chat API غير الرسمي  
 
-<details>
-	<summary>
-		<b><i>Users</i></b>
-	</summary>
-	<i>see more details at <a href="https://github.com/ntkhang03/Goat-Bot-V2/blob/main/database/controller/usersData.js">usersData.js</a></i>
-	<br />
-	<br />
+---
 
-```javascript
-// CREATE USER DATA
-const newUserData = await usersData.create(userID, userInfo);
-// userInfo is data get by (await api.getUserInfo(userID))[userID] method or undefined is auto
+## ⚠️ ملاحظة مهمة
+أي محتوى 18+، فحش، إباحية، خيانة، سياسة، إلخ، ممنوع في **Goat-Bot-V2-fixed**  
+تعديل الكود أو إضافة أوامر تخالف هذه القواعد يؤدي لحظر دائم  
 
-// GET USER DATA
-const userData = await usersData.get(userID);
-```
+---
 
+## 💾 قاعدة البيانات
+- النوع: JSON أو SQLite أو MongoDB (تحدد في `config.json`)  
+- الاستخدام الأساسي: Users و Threads  
 
-```javascript
-// SET USER DATA
-await userData.set(userID, updateData, path);
+---
 
+## 📦 إنشاء أمر جديد
+- تحتاج معرفة بـ Javascript: المتغيرات، الدوال، الحلقات، المصفوفات، الكائنات، Promise، async/await  
+- معرفة بـ Node.js: require، module.exports  
+- معرفة بـ Facebook API غير الرسمي: api.sendMessage، api.changeNickname …  
+- الملفات التي تنتهي بـ `.eg.js` لن تُحمّل في البوت، لتشغيلها غيّر الامتداد إلى `.js`  
 
-// Example 1
-//   set data with path
-await usersData.set(4, { banned: true }, "data");
+---
 
-//   set data without path
-const userData = await usersData.get(userID);
-userData.data = {
+## 🚀 بدء إنشاء أمر جديد
+- ارجع للأوامر والأحداث الموجودة كمراجع (`cmds` و `events`)  
+- أمثلة متاحة للأوامر والأحداث  
+- في VSCode يمكنك إنشاء أمر جديد باستخدام snippets: `GoatBotCommandCreate` أو `GoatBotEventCreate` (اضغط tab للانتقال للعنصر التالي)  
+
+---
+
+## 📝 ملخص
+هذا الملف يوضح إعدادات **Goat-Bot-V2-fixed** وهي نسخة معدلة من **Goat Bot** الأصلي لتسهيل الاستخدام وإضافة تعديلات شخصية.userData.data = {
 	banned: true
 };
 await usersData.set(4, {
