@@ -2,7 +2,14 @@
 
 ![شعار ELIEBOT](https://i.ibb.co/PZxFWbhY/image.jpg)
 
-Node.js Support v16.x | نسخة ELIEBOT معدلة من Goat Bot الأصلي | تم التعديل بواسطة الفريدو
+<p align="center">
+	<a href="https://nodejs.org/dist/v16.20.0">
+		<img src="https://img.shields.io/badge/Nodejs%20Support-16.x-brightgreen.svg?style=flat-square" alt="Nodejs Support v16.x">
+	</a>
+	<img alt="size" src="https://img.shields.io/github/repo-size/ntkhang03/Goat-Bot-V2.svg?style=flat-square&label=size">
+	<img alt="code-version" src="https://img.shields.io/badge/dynamic/json?color=brightgreen&label=code%20version&prefix=v&query=%24.version&url=https://github.com/ntkhang03/Goat-Bot-V2/raw/main/package.json&style=flat-square">
+	<img alt="license" src="https://img.shields.io/badge/license-MIT-green?style=flat-square&color=brightgreen">
+</p>
 
 ---
 
@@ -43,6 +50,7 @@ Node.js Support v16.x | نسخة ELIEBOT معدلة من Goat Bot الأصلي |
 ## 🛠️ كيفية إنشاء أوامر جديدة
 - انظر مجلد `commands` و `events` للحصول على أمثلة  
 - في VSCode يمكن استخدام Snippets: `GoatBotCommandCreate` أو `GoatBotEventCreate` (اضغط tab للانتقال للعنصر التالي)  
+- الملفات التي تنتهي بـ `.eg.js` لن تُحمّل، غيّر الامتداد إلى `.js` لتفعيلها
 
 ---
 
