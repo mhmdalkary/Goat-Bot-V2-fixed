@@ -1,78 +1,73 @@
-<img src="https://i.ibb.co/RQ28H2p/banner.png" alt="banner">
-<h1 align="center"><img src="./dashboard/images/logo-non-bg.png" width="22px"> Goat Bot - Bot Chat Messenger</h1>
+# ELIEBOT - Bot Chat Messenger
 
-<p align="center">
-	<a href="https://nodejs.org/dist/v16.20.0">
-		<img src="https://img.shields.io/badge/Nodejs%20Support-16.x-brightgreen.svg?style=flat-square" alt="Nodejs Support v16.x">
-	</a>
-  <img alt="size" src="https://img.shields.io/github/repo-size/ntkhang03/Goat-Bot-V2.svg?style=flat-square&label=size">
-  <img alt="code-version" src="https://img.shields.io/badge/dynamic/json?color=brightgreen&label=code%20version&prefix=v&query=%24.version&url=https://github.com/ntkhang03/Goat-Bot-V2/raw/main/package.json&style=flat-square">
-  <img alt="visitors" src="https://visitor-badge.laobi.icu/badge?style=flat-square&page_id=ntkhang3.Goat-Bot-V2">
-  <img alt="size" src="https://img.shields.io/badge/license-MIT-green?style=flat-square&color=brightgreen">
-</p>
+![شعار ELIEBOT](https://i.ibb.co/PZxFWbhY/image.jpg)
 
-- [📝 **Note**](#-note)
-- [🚧 **Requirement**](#-requirement)
-- [📝 **Tutorial**](#-tutorial)
-- [💡 **How it works?**](#-how-it-works)
-- [🔔 **How to get notification when have new update?**](#-how-to-get-notification-when-have-new-update)
-- [🛠️ **How to create new commands**](#️-how-to-create-new-commands)
-- [💭 **Support**](#-support)
-- [📚 **Support Languages in source code**](#-support-languages-in-source-code)
-- [📸 **Screenshots**](#-screenshots)
-- [✨ **Copyright (C)**](#-copyright-c)
+Node.js Support v16.x | نسخة ELIEBOT معدلة من Goat Bot الأصلي | تم التعديل بواسطة الفريدو
 
-<hr>
+---
 
-## 📝 **Note**
-- This is a messenger chat bot using a personal account, using an [unofficial api](https://github.com/ntkhang03/fb-chat-api/blob/master/DOCS.md) ([Origin here](https://github.com/Schmavery/facebook-chat-api)) and this may lead to facebook account being locked due to spam or other reasons. 
-- So, I recommend using a clone account (one that you're willing to throw away at any time)
-- ***I am not responsible for any problems that may arise from using this bot.***
+## 📝 ملاحظة
+هذا بوت محادثة يستخدم حساب شخصي مع Facebook API غير رسمي، وقد يؤدي استخدامه إلى حظر الحساب بسبب الرسائل المزعجة أو أسباب أخرى.  
+يوصى باستخدام حساب تجريبي يمكن التخلص منه في أي وقت.  
+**ELIEBOT** غير مسؤول عن أي مشاكل قد تنتج عن استخدام البوت.
 
-## 🚧 **Requirement**
-- Node.js 16.x [Download](https://nodejs.org/dist/v16.20.0) | [Home](https://nodejs.org/en/download/) | [Other versions](https://nodejs.org/en/download/releases/)
-- Knowledge of **programming**, javascript, nodejs, unofficial facebook api
+---
 
-## 📝 **Tutorial**
-Tutorial has been uploaded on YouTube
-- For mobile phone: https://www.youtube.com/watch?v=grVeZ76HlgA
-- For vps/windows: https://www.youtube.com/watch?v=uCbSYNQNEwY
-  
-Summary instructions:
-- See [here](https://github.com/ntkhang03/Goat-Bot-V2/blob/main/STEP_INSTALL.md)
+## 🚧 المتطلبات
+- Node.js 16.x  
+- معرفة بالبرمجة، Javascript، Node.js  
+- معرفة بـ Facebook API غير الرسمي  
 
+---
 
+## 📝 الدروس التعليمية
+- للهواتف المحمولة: [YouTube Tutorial](https://www.youtube.com/watch?v=grVeZ76HlgA)  
+- للـ VPS أو Windows: [YouTube Tutorial](https://www.youtube.com/watch?v=uCbSYNQNEwY)  
 
-## 💡 **How it works?**
-- The bot uses the unofficial facebook api to send and receive messages from the user.
-- When having a `new event` (message, reaction, new user join, user leave chat box,...) the bot will emit an event to the `handlerEvents`.
-- The `handlerEvents` will handle the event and execute the command:
-  - `onStart`:
-    - the handler will check if user `call a command or not`.
-    - if yes, it will check if `user banned` or mode `admin box only is turned on` or not, if not, it will execute the command.
-    - next, it will check the `permission` of the user.
-    - next, it will check if the `countdown` of command is over or not.
-    - finally, it will execute the command and `log` information to the console.
+---
 
-  - `onChat`:
-    - the handler will run `when the user sends a message`.
-    - it will check `permission` of the user.
-    - the handler will `execute` the command, if it return a `function` or `async function` then it willl check `user banned` or mode `admin box only is turned on` or not, if not, it will call the function and `log` information to the console.
+## 💡 كيف يعمل البوت؟
+- يستخدم البوت Facebook API غير الرسمي لإرسال واستقبال الرسائل  
+- عند حدوث حدث جديد (رسالة، رد فعل، انضمام مستخدم، مغادرة مستخدم...) يقوم البوت بإرسال الحدث للـ handlerEvents  
 
-  - `onFirstChat`:
-    - the handler will run `when get the first message` from the chat box since the bot started.
-    - the way it works is like `onChat`.
+### handlerEvents الرئيسية:
+- **onStart**: يتحقق من الأوامر، صلاحيات المستخدم، وحظر الحساب قبل تنفيذ الأمر  
+- **onChat**: ينفذ عند إرسال المستخدم رسالة ويتحقق من صلاحياته قبل تنفيذ الأمر  
+- **onFirstChat**: ينفذ عند أول رسالة من المستخدم منذ تشغيل البوت  
+- **onReaction**: ينفذ عند تفاعل المستخدم مع رسالة محددة  
+- **onReply**: ينفذ عند رد المستخدم على رسالة محددة  
+- **onEvent**: ينفذ عند حدوث أحداث مثل انضمام/مغادرة مستخدم أو تغيير صلاحيات المشرف  
 
-  - `onReaction`:
-    - the handler will run when the user `reacts` to a `message has messageID` is set in `GoatBot.onReaction` as follows:
-		```javascript
-		// example:	
-		global.GoatBot.onReaction.set(msg.messageID, {
-			messageID: msg.messageID,
-			commandName,
-			// ... and more
-		});
-		```
+---
+
+## 🛠️ كيفية إنشاء أوامر جديدة
+- انظر مجلد `commands` و `events` للحصول على أمثلة  
+- في VSCode يمكن استخدام Snippets: `GoatBotCommandCreate` أو `GoatBotEventCreate` (اضغط tab للانتقال للعنصر التالي)  
+
+---
+
+## 💭 الدعم
+للمساعدة التقنية، انضم لمجموعات الدعم التالية:  
+- [Discord](https://discord.com/invite/DbyGwmkpVY) (موصى به)  
+- [Facebook Group](https://www.facebook.com/groups/goatbot)  
+- [Messenger Chat](https://m.me/j/Abbq0B-nmkGJUl2C)  
+
+> يرجى عدم إرسال رسائل خاصة للمطور، استخدم مجموعات الدعم للرد على الأسئلة  
+
+---
+
+## 📚 اللغات المدعومة
+- en: English  
+- vi: Vietnamese  
+
+يمكن تغيير اللغة في ملف `config.json` أو في المجلد `languages/`، `languages/cmds/`، و `languages/events/`
+
+---
+
+## ✨ حقوق الملكية
+- المشروع الأصلي: NTKhang (Goat Bot)  
+- النسخة المعدلة: **ELIEBOT** بواسطة **الفريدو**  
+- شكر خاص لـ Allou Mohamed لتعديلات المصدر المفتوح		```
     - the handler will automatically add method `delete`, if this method is called, it will delete the message from the set.
     - next, it will check `permission` of the user and `execute` if the user has permission and `log` information to the console.
 
