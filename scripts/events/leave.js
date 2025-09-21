@@ -3,29 +3,24 @@ const { getTime } = global.utils;
 module.exports = {
 	config: {
 		name: "leave",
-		version: "1.4",
+		version: "1.5",
 		author: "NTKhang",
 		category: "events"
 	},
 
 	langs: {
-		vi: {
-			session1: "sáng",
-			session2: "trưa",
-			session3: "chiều",
-			session4: "tối",
-			leaveType1: "tự rời",
-			leaveType2: "bị kick",
-			defaultLeaveMessage: "{userName} đã {type} khỏi nhóm"
-		},
-		en: {
-			session1: "morning",
-			session2: "noon",
-			session3: "afternoon",
-			session4: "evening",
-			leaveType1: "left",
-			leaveType2: "was kicked from",
-			defaultLeaveMessage: "{userName} {type} the group"
+		ar: {
+			session1: "الصباح",
+			session2: "الظهر",
+			session3: "العصر",
+			session4: "المساء",
+			leaveType1: "غادر المجموعة",
+			leaveType2: "تم طرده من المجموعة",
+			defaultLeaveMessage: `▸ ◉ خروج عضو
+│ العضو: {userName}
+│ الحدث: {type}
+│ المجموعة: {threadName}
+│ وقت الجلسة: {session}`
 		}
 	},
 
@@ -34,53 +29,35 @@ module.exports = {
 			return async function () {
 				const { threadID } = event;
 				const threadData = await threadsData.get(threadID);
-				if (!threadData.settings.sendLeaveMessage)
-					return;
-				const { leftParticipantFbId } = event.logMessageData;
-				if (leftParticipantFbId == api.getCurrentUserID())
-					return;
-				const hours = getTime("HH");
+				if (!threadData.settings.sendLeaveMessage) return;
 
+				const { leftParticipantFbId } = event.logMessageData;
+				if (leftParticipantFbId == api.getCurrentUserID()) return;
+
+				const hours = getTime("HH");
 				const threadName = threadData.threadName;
 				const userName = await usersData.getName(leftParticipantFbId);
 
-				// {userName}   : name of the user who left the group
-				// {type}       : type of the message (leave)
-				// {boxName}    : name of the box
-				// {threadName} : name of the box
-				// {time}       : time
-				// {session}    : session
-
-				let { leaveMessage = getLang("defaultLeaveMessage") } = threadData.data;
-				const form = {
-					mentions: leaveMessage.match(/\{userNameTag\}/g) ? [{
-						tag: userName,
-						id: leftParticipantFbId
-					}] : null
-				};
-
+				let leaveMessage = getLang("defaultLeaveMessage");
 				leaveMessage = leaveMessage
-					.replace(/\{userName\}|\{userNameTag\}/g, userName)
+					.replace(/\{userName\}/g, userName)
 					.replace(/\{type\}/g, leftParticipantFbId == event.author ? getLang("leaveType1") : getLang("leaveType2"))
-					.replace(/\{threadName\}|\{boxName\}/g, threadName)
-					.replace(/\{time\}/g, hours)
-					.replace(/\{session\}/g, hours <= 10 ?
-						getLang("session1") :
-						hours <= 12 ?
-							getLang("session2") :
-							hours <= 18 ?
-								getLang("session3") :
-								getLang("session4")
+					.replace(/\{threadName\}/g, threadName)
+					.replace(/\{session\}/g, 
+						hours <= 10 ? getLang("session1") :
+						hours <= 12 ? getLang("session2") :
+						hours <= 18 ? getLang("session3") :
+						getLang("session4")
 					);
 
-				form.body = leaveMessage;
+				const form = {
+					body: leaveMessage,
+					mentions: leaveMessage.includes("{userNameTag}") ? [{ id: leftParticipantFbId, tag: userName }] : null,
+					attachment: []
+				};
 
-				if (leaveMessage.includes("{userNameTag}")) {
-					form.mentions = [{
-						id: leftParticipantFbId,
-						tag: userName
-					}];
-				}
+				// إضافة صورة العضو
+				form.attachment.push(await global.utils.getStream(`https://graph.facebook.com/${leftParticipantFbId}/picture?height=512&width=512&access_token=${api.getAppAccessToken()}`));
 
 				message.send(form);
 			};
